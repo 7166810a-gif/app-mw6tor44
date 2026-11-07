@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_background"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/wifi_ssid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceListItem"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        tools:text="MyWifiNetwork" />
+
+    <TextView
+        android:id="@+id/wifi_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        tools:text="Secured | ★★★☆☆ | 2.4 GHz" />
+
+</LinearLayout>

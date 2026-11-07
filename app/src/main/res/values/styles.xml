@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.WifiConnector" parent="android:style/Theme.Material.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:colorPrimary">#4CAF50</item>
+        <item name="android:colorPrimaryDark">#388E3C</item>
+        <item name="android:colorAccent">#8BC34A</item>
+
+        <!-- General UI elements -->
+        <item name="android:textColorPrimary">#212121</item>
+        <item name="android:textColorSecondary">#757575</item>
+        <item name="android:windowBackground">#F5F5F5</item>
+        <item name="android:colorBackground">#F5F5F5</item>
+
+        <!-- Button styles -->
+        <item name="android:buttonStyle">@style/Widget.WifiConnector.Button</item>
+
+        <!-- Switch styles -->
+        <item name="android:switchStyle">@style/Widget.WifiConnector.Switch</item>
+    </style>
+
+    <style name="Theme.WifiConnector.Splash" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="Widget.WifiConnector.Button" parent="android:style/Widget.Material.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:stateListAnimator">@null</item> <!-- Disable elevation animation -->
+    </style>
+
+    <style name="Widget.WifiConnector.Switch" parent="android:style/Widget.Material.CompoundButton.Switch">
+        <item name="android:thumbTint">#4CAF50</item> <!-- Thumb color -->
+        <item name="android:trackTint">#B2FF59</item> <!-- Track color -->
+        <item name="android:textColorPrimary">#212121</item>
+    </style>
+
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">מנהל Wi-Fi</string>
+    <string name="action_settings">הגדרות</string>
+    <string name="scanning">סורק רשתות Wi-Fi...</string>
+    <string name="no_wifi_found">לא נמצאו רשתות Wi-Fi זמינות.</string>
+    <string name="error_wifi_scan">שגיאה בסריקת Wi-Fi.</string>
+    <string name="error_location_permission">נדרשת הרשאת מיקום לסריקת Wi-Fi.</string>
+    <string name="connected_to">מחובר ל-</string>
+    <string name="connecting">מתחבר...</string>
+    <string name="password_prompt_title">הזן סיסמה</string>
+    <string name="password_prompt_message">הזן את הסיסמה עבור הרשת</string>
+    <string name="connect">חבר</string>
+    <string name="open_network_connect_prompt_title">רשת פתוחה</string>
+    <string name="open_network_connect_prompt_message">האם ברצונך להתחבר לרשת הפתוחה</string>
+    <string name="error_connection">שגיאה בהתחברות לרשת.</string>
+    <string name="auto_connect_title">התחברות אוטומטית</string>
+    <string name="auto_connect_summary">התחבר אוטומטית לרשתות שמורות.</string>
+    <string name="turn_wifi_on">הפעל Wi-Fi</string>
+</resources>
