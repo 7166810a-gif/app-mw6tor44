@@ -276,8 +276,6 @@ public class MainActivity extends Activity {
                 String networkSSID = selectedNetwork.SSID;
 
                 if (networkSSID == null || networkSSID.isEmpty()) {
-                    // Handle hidden networks or networks with empty SSIDs if necessary
-                    // For simplicity, we might skip connection attempts for truly empty SSIDs
                     if (selectedNetwork.capabilities.contains("ESS") && !selectedNetwork.SSID.isEmpty()) {
                        networkSSID = selectedNetwork.SSID;
                     } else {
@@ -430,9 +428,6 @@ public class MainActivity extends Activity {
 
     private void handleAutoConnect(ScanResult scanResult) {
         if (autoConnectEnabled && savedNetworksSSID.contains(scanResult.SSID)) {
-            // If auto-connect is enabled and this network is in our saved list, try to connect
-            // For simplicity, we are assuming saved networks can be connected without a password prompt here.
-            // A more robust implementation would store passwords securely or re-prompt if needed.
             connectToWifi(scanResult, null); // Assuming saved networks are open or password is known and not prompted
         }
     }

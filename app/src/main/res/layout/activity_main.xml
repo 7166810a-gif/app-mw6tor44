@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Wi-Fi מנותק"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAppearance="?android:attr/textAppearanceHeadline6"
         android:gravity="center"
         android:paddingBottom="16dp"
         android:textColor="#212121" />

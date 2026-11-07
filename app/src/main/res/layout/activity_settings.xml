@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/auto_connect_title"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textAppearance="?android:attr/textAppearanceHeadline6"
         android:textColor="#212121" />
 
     <Switch
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="@string/auto_connect_summary"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textAppearance="?android:attr/textAppearanceBody1"
         android:textColor="#424242" />
 
 </LinearLayout>
