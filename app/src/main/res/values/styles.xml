@@ -1,25 +1,19 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="Theme.WifiConnector" parent="android:style/Theme.Material.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="android:colorPrimary">#4CAF50</item>
         <item name="android:colorPrimaryDark">#388E3C</item>
         <item name="android:colorAccent">#8BC34A</item>
 
-        <!-- General UI elements -->
         <item name="android:textColorPrimary">#212121</item>
         <item name="android:textColorSecondary">#757575</item>
         <item name="android:windowBackground">#F5F5F5</item>
         <item name="android:colorBackground">#F5F5F5</item>
 
-        <!-- Button styles -->
         <item name="android:buttonStyle">@style/Widget.WifiConnector.Button</item>
-
-        <!-- Switch styles -->
         <item name="android:switchStyle">@style/Widget.WifiConnector.Switch</item>
 
-        <!-- TextView styles -->
+        <!-- Custom TextAppearance styles for consistency -->
         <item name="android:textAppearanceListItem">@style/TextAppearance.ListItem</item>
         <item name="android:textAppearanceListItemSecondary">@style/TextAppearance.ListItemSecondary</item>
         <item name="android:textAppearanceHeadline6">@style/TextAppearance.Headline6</item>
@@ -40,23 +34,22 @@
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:stateListAnimator">@null</item> <!-- Disable elevation animation -->
+        <item name="android:stateListAnimator">@null</item>
     </style>
 
     <style name="Widget.WifiConnector.Switch" parent="android:style/Widget.Material.CompoundButton.Switch">
-        <item name="android:thumbTint">#4CAF50</item> <!-- Thumb color -->
-        <item name="android:trackTint">#B2FF59</item> <!-- Track color -->
+        <item name="android:thumbTint">#4CAF50</item>
+        <item name="android:trackTint">#B2FF59</item>
         <item name="android:textColorPrimary">#212121</item>
     </style>
 
-    <!-- Custom TextAppearance styles for consistency -->
-    <style name="TextAppearance.ListItem" parent="android:TextAppearance.Material.ListItem">
+    <style name="TextAppearance.ListItem" parent="android:TextAppearance.Material.Subhead">
         <item name="android:textColor">#212121</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.ListItemSecondary" parent="android:TextAppearance.Material.ListItemSecondary">
+    <style name="TextAppearance.ListItemSecondary" parent="android:TextAppearance.Material.Caption">
         <item name="android:textColor">#757575</item>
         <item name="android:textSize">14sp</item>
     </style>

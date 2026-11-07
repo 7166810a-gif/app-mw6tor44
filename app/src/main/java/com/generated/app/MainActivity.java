@@ -95,13 +95,9 @@ public class MainActivity extends Activity {
         filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
         registerReceiver(wifiReceiver, filter);
 
-        // Check current Wi-Fi connection status
         updateConnectionStatus();
-
-        // Reload settings
         loadSettings();
 
-        // Update button visibility based on Wi-Fi state
         if (wifiManager != null && !wifiManager.isWifiEnabled()) {
             scanButton.setText(R.string.turn_wifi_on);
             scanButton.setVisibility(View.VISIBLE);
@@ -112,11 +108,11 @@ public class MainActivity extends Activity {
                 }
             });
             statusTextView.setText("Wi-Fi כבוי. יש להפעיל.");
-            wifiList.setAdapter(null); // Clear the list if Wi-Fi is off
+            wifiList.setAdapter(null);
         } else {
             scanButton.setVisibility(View.GONE);
             if (wifiManager != null && wifiManager.isWifiEnabled()) {
-                startWifiScan(); // Start scanning if Wi-Fi is on
+                startWifiScan();
             }
         }
     }
@@ -174,7 +170,7 @@ public class MainActivity extends Activity {
     }
 
     private void setupScanTimer() {
-        stopScanTimer(); // Ensure no duplicate timers are running
+        stopScanTimer();
         scanRunnable = new Runnable() {
             @Override
             public void run() {
@@ -185,10 +181,10 @@ public class MainActivity extends Activity {
                         statusTextView.setText(R.string.error_wifi_scan);
                     }
                 }
-                scanHandler.postDelayed(this, TimeUnit.SECONDS.toMillis(10)); // Rescan every 10 seconds
+                scanHandler.postDelayed(this, TimeUnit.SECONDS.toMillis(10));
             }
         };
-        scanHandler.postDelayed(scanRunnable, TimeUnit.SECONDS.toMillis(10)); // Start the timer
+        scanHandler.postDelayed(scanRunnable, TimeUnit.SECONDS.toMillis(10));
     }
 
     private void stopScanTimer() {
@@ -276,15 +272,14 @@ public class MainActivity extends Activity {
                 String networkSSID = selectedNetwork.SSID;
 
                 if (networkSSID == null || networkSSID.isEmpty()) {
-                    if (selectedNetwork.capabilities.contains("ESS") && !selectedNetwork.SSID.isEmpty()) {
-                       networkSSID = selectedNetwork.SSID;
+                     if (selectedNetwork.capabilities.contains("ESS") && !selectedNetwork.SSID.isEmpty()) {
+                        networkSSID = selectedNetwork.SSID;
                     } else {
                         Toast.makeText(MainActivity.this, "שם רשת לא חוקי.", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
 
-                // Check if already connected to this network
                 WifiInfo wifiInfo = wifiManager.getConnectionInfo();
                 if (wifiInfo != null && networkSSID.equals(removeQuotes(wifiInfo.getSSID()))) {
                     Toast.makeText(MainActivity.this, getString(R.string.connected_to) + " " + networkSSID, Toast.LENGTH_SHORT).show();
@@ -340,7 +335,7 @@ public class MainActivity extends Activity {
         builder.setPositiveButton(R.string.connect, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                connectToWifi(scanResult, null); // null password for open networks
+                connectToWifi(scanResult, null);
             }
         });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -356,7 +351,7 @@ public class MainActivity extends Activity {
     private void connectToWifi(ScanResult scanResult, String password) {
         statusTextView.setText(R.string.connecting);
         WifiConfiguration wifiConfiguration = new WifiConfiguration();
-        wifiConfiguration.SSID = "\"" + (scanResult.SSID.isEmpty() ? "" : scanResult.SSID) + "\""; // Handle hidden network SSID
+        wifiConfiguration.SSID = "\"" + (scanResult.SSID.isEmpty() ? "" : scanResult.SSID) + "\"";
 
         String capabilities = scanResult.capabilities;
 
@@ -374,11 +369,9 @@ public class MainActivity extends Activity {
             wifiConfiguration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
             wifiConfiguration.preSharedKey = "\"" + password + "\"";
         } else {
-            // Open network
             wifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
         }
 
-        // If the network is already configured, remove it to avoid issues
         List<WifiConfiguration> existingConfigs = wifiManager.getConfiguredNetworks();
         if (existingConfigs != null) {
             for (WifiConfiguration config : existingConfigs) {
@@ -392,11 +385,9 @@ public class MainActivity extends Activity {
         int netId = wifiManager.addNetwork(wifiConfiguration);
         if (netId != -1) {
             wifiManager.enableNetwork(netId, true);
-            // wifiManager.saveConfiguration(); // Saving is implicitly handled by addNetwork/enableNetwork
-            // Connection attempt will be handled by NETWORK_STATE_CHANGED_ACTION
         } else {
             Toast.makeText(this, R.string.error_connection, Toast.LENGTH_SHORT).show();
-            statusTextView.setText("חיפוש Wi-Fi..."); // Reset status
+            statusTextView.setText("חיפוש Wi-Fi...");
         }
     }
 
@@ -423,12 +414,11 @@ public class MainActivity extends Activity {
 
     private void loadSettings() {
         autoConnectEnabled = getSharedPreferences("WifiSettings", MODE_PRIVATE).getBoolean("auto_connect_enabled", false);
-        // Load saved networks if needed. For now, savedNetworksSSID is managed dynamically on connection.
     }
 
     private void handleAutoConnect(ScanResult scanResult) {
         if (autoConnectEnabled && savedNetworksSSID.contains(scanResult.SSID)) {
-            connectToWifi(scanResult, null); // Assuming saved networks are open or password is known and not prompted
+            connectToWifi(scanResult, null);
         }
     }
 
@@ -441,7 +431,6 @@ public class MainActivity extends Activity {
                     case WifiManager.SCAN_RESULTS_AVAILABLE_ACTION:
                         List<ScanResult> results = wifiManager.getScanResults();
                         updateWifiList(results);
-                        // Attempt auto-connect for discovered networks
                         if (autoConnectEnabled) {
                             for (ScanResult result : results) {
                                 handleAutoConnect(result);
@@ -468,7 +457,7 @@ public class MainActivity extends Activity {
                                     startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                                 }
                             });
-                            wifiList.setAdapter(null); // Clear the list
+                            wifiList.setAdapter(null);
                         }
                         break;
                 }
