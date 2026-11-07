@@ -1,8 +1,10 @@
 package com.generated.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -15,7 +17,14 @@ public class SettingsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Use framework inflater
         setContentView(R.layout.activity_settings);
+
+        // Add back button support
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setTitle("הגדרות Wi-Fi");
+        }
 
         sharedPreferences = getSharedPreferences("WifiSettings", MODE_PRIVATE);
 
@@ -45,5 +54,14 @@ public class SettingsActivity extends Activity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("auto_connect_enabled", enabled);
         editor.apply();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed(); // Handle the back button action
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
